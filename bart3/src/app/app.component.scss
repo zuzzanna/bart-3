@@ -1,0 +1,73 @@
+/*
+----Colors
+*/
+$white: #FFFFFFFF;
+$hr-gray: #cccccc7d;
+$gray: #A9A9A9FF;
+$darkest-gray: #615e5e;
+$shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+$submit-button-green: #42c88d;
+$delete-button: #c02929;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid $hr-gray;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.header {
+  height: 300px;
+  background-size: cover !important;
+  filter: blur(8px);
+  background: darkgray none repeat scroll 0% 0%;
+}
+
+.bg_image {
+  background-size: cover !important;
+  filter: blur(8px);
+}
+
+.container_content {
+  margin-top: -200px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+@media(min-width: 576px) {
+  .container_content {
+    max-width: 540px;
+  }
+}
+
+@media(min-width: 768px) {
+  .container_content {
+    max-width: 720px;
+  }
+}
+
+@media(min-width: 992px) {
+  .container_content {
+    max-width: 960px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container_content {
+    max-width: 1140px;
+  }
+}
+
+.footer p {
+  color: $gray;
+}

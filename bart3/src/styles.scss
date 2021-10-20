@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '~primeng/resources/themes/saga-blue/theme.css';
+body {
+  font-family: "Roboto Thin";
+  margin: 0;
+}
+
+h1, h2 {
+  color: white;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h4 {
+  color: darkgray;
+  text-transform: uppercase;
+  font-size: revert;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #cccccc7d;
+  margin: 1em 0;
+  padding: 0;
+}

@@ -1,0 +1,87 @@
+<div class="col-12 title">
+  <h1>FOTOGALÉRIA</h1>
+  <br>
+  <div routerLink="">
+    <img src="assets/images/icons/back_icon.svg" alt="">
+    <h2>{{name}}</h2>
+  </div>
+  <hr>
+</div>
+
+<div class="col-12">
+  <div *ngIf="gallery" class="tz-gallery">
+    <p-galleria [value]="gallery.images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex"
+                [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '850px'}"
+                [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false"
+                [baseZIndex]="100000">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="get_gallery_image(item)"  style="width: 100%; display: block;"/>
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+          <img [src]="item.name" style="display: block;"/>
+        </div>
+      </ng-template>
+    </p-galleria>
+    <div *ngIf="gallery" class="row categorie_gallery" >
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let image of gallery.images; let index = index;" key="index">
+        <img [src]="get_gallery_preview(image)" class="gallery_image" [alt]="image.name" style="cursor: pointer"
+             (click)="imageClick(index)" />
+        <button class="delete_image" (click)="deleteImage(image)">X</button>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+        <div class="category add_category" (click)="displayBasic=true">
+          <div class="center">
+            <img src="assets/images/icons/Shape_6.svg" alt="...">
+            <h4>Pridať fotky</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+        <div class="category add_category" (click)="deleteGallery()">
+          <div class="center">
+            <h4>Odstrániť galériu</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<p-dialog [closable]="false" [(visible)]="displayBasic"
+          [style]="{width: '50vw'}" [styleClass]="'modal'">
+  <ng-template pTemplate="body">
+    <div class="modal-dialog" role="document">
+      <button class="close_modal" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+        <img src="./assets/images/icons/close_icon.svg" alt="">
+        <span aria-hidden="true">Zavrieť</span>
+      </button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Pridať fotky</h3>
+        </div>
+        <div class="modal-body">
+          <img src="./assets/images/icons/Shape_6.svg" class="modal_image" alt="move">
+          <h4>Sem presunte fotky</h4>
+          <p>alebo</p>
+          <p-fileUpload [multiple]="false" [maxFileSize]="1024*1024" accept="image/*" [customUpload]="true"
+                        [maxFileSize] = "20000000"
+                        [invalidFileSizeMessageSummary]="'{0}: Nevhodná veľkosť obrázka'"
+                        [invalidFileSizeMessageDetail] = "'Maximálna veľkosť je {0}.'"
+                        [invalidFileTypeMessageSummary] = "'{0}: nesprávny typ obrázka'"
+                        [invalidFileLimitMessageDetail] = "'limit je {0}.'"
+                        [invalidFileLimitMessageSummary]="'Prekročené maximum povolených obrázkov'"
+                        [invalidFileTypeMessageDetail]="'Povolené typy: {0}'"
+                        [chooseLabel]="'Vyber'"
+                        [uploadLabel]="'Načítaj'"
+                        [cancelLabel]="'Zruš'"
+                        (uploadHandler)="uploadImages($event)" ></p-fileUpload>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</p-dialog>

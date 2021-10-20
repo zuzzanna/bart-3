@@ -1,0 +1,250 @@
+@import "./../../app.component";
+.header{
+  background: none;
+}
+
+.title {
+  & img {
+    float: left;
+    padding: 7px;
+    padding-right: 15px;
+  }
+
+  & a:hover {
+    text-decoration: none;
+  }
+}
+
+h2 {
+  cursor: pointer;
+}
+
+;
+.title img {
+  float: left;
+  padding: 7px;
+  padding-right: 15px;
+}
+
+.title a:hover {
+  text-decoration: none;
+}
+
+.center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.delete_image {
+  margin-top: 5px;
+  background: $delete-button;
+  color: $white;
+  border: 1px solid $delete-button;
+}
+
+.p-dialog {
+  //top: 30% !important;
+
+  & button {
+    color: $white;
+    padding-bottom: 10px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  & h3 {
+    text-transform: uppercase;
+    font-size: revert;
+    font-weight: bold;
+  }
+}
+
+::ng-deep .p-dialog {
+  top: 0%;
+  box-shadow: none;
+  width: 100% !important;
+  max-height: 100% !important;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+::ng-deep .p-dialog .p-dialog-content,
+::ng-deep .p-dialog .p-dialog-header {
+  background: none !important;
+  overflow: hidden;
+}
+
+::ng-deep .modal-dialog {
+  pointer-events: all;
+  top: 0;
+}
+
+.close_modal {
+  float: right;
+  background-color: transparent;
+  color: $white;
+  appearance: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: none;
+
+  & span {
+    font-weight: 700;
+  }
+}
+
+.close {
+  img {
+    height: 25px;
+  }
+
+  span {
+    font-size: initial;
+  }
+}
+
+.modal-footer {
+  border-bottom: 1px solid #dee2e6;
+  border-top: none;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+
+  & img {
+    margin: 5px;
+  }
+}
+
+.modal-title {
+  text-transform: uppercase;
+  font-size: revert;
+  font-weight: bold;
+}
+
+
+form {
+  width: 100%;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  box-sizing: border-box;
+  width: 75%;
+  color: $gray;
+  text-transform: uppercase;
+  font-size: revert;
+  font-weight: bold;
+}
+
+form button {
+  width: auto;
+  background-color: $submit-button-green !important;
+  color: $white !important;
+  padding: 8px 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media(max-width: 444px) {
+  input[type=text] {
+    width: 100%;
+  }
+  form button {
+    width: 100%;
+  }
+}
+
+.category {
+  box-shadow: $shadow;
+  background: $white;
+}
+
+.add_category {
+  height: 100%;
+  cursor: pointer;
+  min-height: 200px;
+
+  & img {
+    filter: invert(0.5);
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    margin-bottom: 5px;
+  }
+}
+
+@media(max-width: 576px) {
+  .add_category {
+    height: 150px;
+  }
+}
+
+.modal-content {
+  padding: 15px 30px;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+  padding: 10px 0px;
+  margin: 0;
+}
+
+.modal-body {
+  border: dashed $gray;
+  padding: 10px;
+  color: $gray;
+  font-size: revert;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-body h4, .modal-body p {
+  margin-bottom: 5px;
+}
+
+.modal-body p {
+  font-size: smaller;
+}
+
+.modal-body button {
+  width: auto;
+  color: $gray;
+  background-color: $white;
+  padding: 8px 18px;
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+  border: solid $gray;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: revert;
+}
+
+.modal_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+form button {
+  float: right;
+}
+
+.gallery_image {
+  width: 100%;
+  border-radius: 0;
+  position: relative;
+  height: 200px;
+  object-fit: cover;
+}

@@ -1,0 +1,62 @@
+<div class="col-12">
+  <h1>FOTOGALÉRIA</h1>
+  <br>
+  <h2>KATEGÓRIE</h2>
+  <hr>
+</div>
+<div class="col-12">
+  <div class="row">
+
+    <div *ngFor="let gallery of galleries" class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 zoom"
+         (mouseenter)="show_img_background($event.target)" (mouseleave)="hide_img_background()">
+      <div class="category" [routerLink]="[gallery.gallery.path]">
+        <img src="{{get_gallery_image(gallery)}}"
+             class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{gallery.gallery.name}}</h5>
+          <p *ngIf="gallery.images.length == 0">Žiadna fotka</p>
+          <p *ngIf="gallery.images.length == 1">1 fotka</p>
+          <p *ngIf="gallery.images.length > 1 && gallery.images.length < 5"> {{gallery.images.length}} fotky</p>
+          <p *ngIf="gallery.images.length >= 5"> {{gallery.images.length}} fotiek</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+      <div class="category add_category" (click)="displayBasic=true">
+        <div class="center">
+          <img src="assets/images/icons/Shape_1.svg" alt="...">
+          <h4>Pridať kategóriu</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog [closable]="false" [(visible)]="displayBasic"
+          [style]="{width: '50vw'}" [styleClass]="'modal'">
+  <ng-template pTemplate="body">
+    <div class="modal-dialog" role="document">
+      <button class="close_modal" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+        <img src="./assets/images/icons/close_icon.svg" alt="">
+        <span aria-hidden="true">Zavrieť</span>
+      </button>
+      <div class="modal-content">
+        <div class="modal-body">
+          <h3 class="modal-title" id="exampleModalLabel">Pridať kategóriu</h3>
+        </div>
+        <div class="modal-footer">
+          <form action="">
+            <input [(ngModel)]="newCategoryName" type="text" id="fname" name="fname" value="ZADAJTE NÁZOV KATEGÓRIE">
+            <button type="button" (click)="createGallery()">
+              <img src="./assets/images/icons/add_icon.svg" alt="">
+              <span aria-hidden="true">Pridať</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</p-dialog>
