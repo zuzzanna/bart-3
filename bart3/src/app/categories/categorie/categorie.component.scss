@@ -1,5 +1,6 @@
 @import "./../../app.component";
-.header{
+
+.header {
   background: none;
 }
 
@@ -43,6 +44,19 @@ h2 {
   background: $delete-button;
   color: $white;
   border: 1px solid $delete-button;
+  position: relative;
+  top: -20%;
+  right: -85%;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px #894242a8;
+}
+
+.delete_image:hover {
+  background: #b15b5b;
+  color: $white;
+  border: 1px solid #b15b5b;
+  box-shadow: 2px 2px 2px rgba(168, 129, 129, 0.66);
+
 }
 
 .p-dialog {

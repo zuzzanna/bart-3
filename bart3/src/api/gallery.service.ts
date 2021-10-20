@@ -48,8 +48,7 @@ export class GalleryService {
 
   public addImage(path: string, image: File, imageName: string): Observable<IImage> {
     let formData = new FormData();
-    formData.append('image', image, "img.png");
-    formData.append('name', imageName);
+    formData.append('image', image, imageName);
     return this.http.post<IImage>(environment.API_url + '/api/gallery/' + encodeURIComponent(path), formData)
   }
 

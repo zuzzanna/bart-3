@@ -27,7 +27,7 @@
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let image of gallery.images; let index = index;" key="index">
         <img [src]="get_gallery_preview(image)" class="gallery_image" [alt]="image.name" style="cursor: pointer"
              (click)="imageClick(index)" />
-        <button class="delete_image" (click)="deleteImage(image)">X</button>
+        <button class="delete_image" (click)="deleteImage(image)">&#9587;</button>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
