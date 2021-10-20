@@ -50,14 +50,24 @@ class ApiController {
                 send_response(201, array("path" => $path, "name" => $data["name"]));
             }
         } else { // add image to gallery
-            if (!isset($_POST["name"]) || !isset($_FILES["image"]) || $_FILES["image"]["error"] !== UPLOAD_ERR_OK)
-                send_response(400, "Image or image name is missing");
+            if (!isset($_FILES["image"]) || $_FILES["image"]["error"] !== UPLOAD_ERR_OK)
+                send_response(400, "Image is missing");
 
             $size = getimagesize($_FILES["image"]["tmp_name"]);
             if ($size === false || ($size["mime"] != "image/jpeg" && $size["mime"] != "image/png"))
                 send_response(400, "Unsupported image format");
 
-            $name = $_POST["name"];
+            $name = $_FILES["image"]["name"];
+            if ($name === null || $name === "") {
+                $name = "Untitled";
+            }
+            else {
+                $ext = pathinfo($name, PATHINFO_EXTENSION);
+                if (strlen($ext) > 0)
+                    $name = substr($name, 0, strlen($name) - strlen($ext) - 1);
+                if (strlen($name) === 0)
+                    $name = "Untitled";
+            }
             $temp_file = $_FILES["image"]["tmp_name"];
 
             $details = $this->model->add_file($path, $temp_file, $name, $size["mime"]);

@@ -11,7 +11,7 @@ $uri = urldecode($uri);
 if (strpos($uri, "/index.php/") === 0)
     $uri = substr($uri, strlen("/index.php"));
 if (strpos($uri, "/api/") === 0)
-    $uri = substr($uri, strlen("/api"));  
+    $uri = substr($uri, strlen("/api"));
 
 // http://api.programator.sk/docs
 // routing array -> first group is always function name
