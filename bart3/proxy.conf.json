@@ -1,10 +1,14 @@
 {
   "/api": {
-    "target": "http://localhost",
-    "secure": false
+    "target": "http://api.programator.sk",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
   },
   "/assets": {
-    "target": "http://localhost",
+    "target": "http://api.programator.sk",
     "secure": false
   }
 }

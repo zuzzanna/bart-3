@@ -60,6 +60,11 @@ export class CategorieComponent implements OnInit, AfterViewChecked {
     setTimeout(function () {
       // @ts-ignore
       this_.name = this_.gallery?.gallery.name;
+      // @ts-ignore
+      if (this_.gallery?.images.length == 0) {
+        let header = <HTMLInputElement>document.getElementById("header")
+        header.style.background = "background: darkgray none repeat scroll 0% 0%";
+      }
     }, 0);
   }
 
@@ -79,7 +84,7 @@ export class CategorieComponent implements OnInit, AfterViewChecked {
    * @return string path of image
    */
   get_gallery_image(image: IGalleryImage): string {
-    return environment.API_url + '/assets/' + image.fullpath;
+    return environment.API_url + '/api/images/700x0/' + image.fullpath;
   }
 
   /**
@@ -95,13 +100,14 @@ export class CategorieComponent implements OnInit, AfterViewChecked {
    * Loads content of gallery to gallery variable and calls function header_background()
    */
   loadGallery(): void {
+    console.log(window.location.pathname.replace('/', ''))
     this.galleryService.getGallery(
-      environment.API_url
-      + window.location.pathname.replace('/', '')).subscribe(d => {
+      window.location.pathname.replace('/', '')).subscribe(d => {
       this.gallery = d;
       let this_ = this;
       setTimeout(function () {
         this_.header_background();
+        console.log(this_.gallery)
       }, 0);
     })
   }

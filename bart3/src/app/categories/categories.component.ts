@@ -28,7 +28,9 @@ export class CategoriesComponent implements OnInit {
   load_galleries() {
     this.galleryService.listGalleries().subscribe(data => {
       for (let gallery of data.galleries) {
+        gallery.path = decodeURIComponent(gallery.path);
         this.galleryService.getGallery(gallery.path).subscribe(d => {
+          d.gallery.path = decodeURIComponent(d.gallery.path);
           this.galleries.push(d);
           this.galleries.sort((a, b) => {
             return a.gallery.name.toLocaleLowerCase().localeCompare(b.gallery.name.toLocaleLowerCase());
@@ -63,7 +65,7 @@ export class CategoriesComponent implements OnInit {
   get_gallery_image(gallery: IGalleryImageDetail) {
     return gallery.images.length > 0
       ? environment.API_url + '/api/images/300x0/' + gallery.images[0].fullpath
-      : environment.API_url + '/assets/default.jpg';
+      : environment.API_url + '';
   }
 
 
@@ -74,7 +76,12 @@ export class CategoriesComponent implements OnInit {
   show_img_background(parent: any) {
     let path = parent.getElementsByTagName("img")[0].getAttribute("src");
     let header = <HTMLInputElement>document.getElementById("header")
-    header.style.background = "url('" + path + "') repeat scroll 70% 60%";
+    console.log(path)
+
+    header.style.background = path !== 'http://localhost:4200' ?
+      "url('" + path + "') repeat scroll 70% 60%" :
+      "background: darkgray none repeat scroll 0% 0%";
+
   }
 
   /**
